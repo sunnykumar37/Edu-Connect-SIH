@@ -40,6 +40,10 @@ app.use('/api/ai-content', aiContentRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
+// Backward-compatible mounts (allow calls without /api prefix)
+app.use('/teachers', teacherRoutes);
+app.use('/students', studentRoutes);
+
 // Error handler to surface detailed errors during dev
 // eslint-disable-next-line no-unused-vars
 app.use((err, _req, res, _next) => {
