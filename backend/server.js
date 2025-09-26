@@ -44,6 +44,14 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.use('/teachers', teacherRoutes);
 app.use('/students', studentRoutes);
 
+// Helpful hints for common misuses (navigating to POST endpoints)
+app.get(['/api/students/signup', '/students/signup'], (_req, res) => {
+  res.status(405).json({ message: 'Use POST with JSON body to sign up: POST /api/students/signup' });
+});
+app.get(['/api/teachers/signup', '/teachers/signup'], (_req, res) => {
+  res.status(405).json({ message: 'Use POST with JSON body to sign up: POST /api/teachers/signup' });
+});
+
 // Error handler to surface detailed errors during dev
 // eslint-disable-next-line no-unused-vars
 app.use((err, _req, res, _next) => {
