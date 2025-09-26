@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://edu-connect-sih.onrender.com/',
+  baseURL: 'https://edu-connect-sih-1.onrender.com',
 })
 
 api.interceptors.request.use((config) => {
